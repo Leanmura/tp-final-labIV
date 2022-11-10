@@ -16,7 +16,7 @@
         grid-template-columns: 16.66% 16.66% 16.66% 16.66% 16.66% 16.66%; //20% 20% 20% 20% 20%;
         grid-template-areas:
             "n n n a a a"
-            "d d e s s s"
+            "d d e e s s"
             "r r w w c c"
             "i i i i i i"
             "f f f f f f"
@@ -42,21 +42,21 @@
         }
 
         #apellido,
-        #nombre,
-        #obrasocial {
+        #nombre {
             width: 87%;
         }
 
         #dni,
         #password,
         #copyPassword,
-        #email {
+        #email,
+        #obrasocial,
+        #edad {
             width: 80%;
         }
 
         #edad {
             grid-area: e;
-            width: 62%;
         }
 
         #dni {
