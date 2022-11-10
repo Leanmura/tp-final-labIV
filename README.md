@@ -1,7 +1,7 @@
 # TpFinal: clinica OnLine
 
 ## Bienvenida
-![This is an image](https://myoctocat.com/assets/images/base-octocat.svg)
+![This is an image](https://github.com/Leanmura/tp-final-labIV/blob/master/capturas/bienvenida.png)
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
