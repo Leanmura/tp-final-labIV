@@ -23,6 +23,7 @@ export class UsuariosComponent implements OnInit {
   @ViewChild("navPac") navPac: ElementRef | undefined;
   @ViewChild("navAdmin") navAdmin: ElementRef | undefined;
   @ViewChild("navRegistro") navRegistro: ElementRef | undefined;
+  @ViewChild("navPerfil") navPerfil: ElementRef | undefined;
 
   constructor(private auth: UserService,
     private firestore: Firestore,
@@ -41,6 +42,8 @@ export class UsuariosComponent implements OnInit {
         this.renderer.removeClass(this.navPac?.nativeElement, "active");
         this.renderer.removeClass(this.navAdmin?.nativeElement, "active");
         this.renderer.removeClass(this.navRegistro?.nativeElement, "active");
+        this.renderer.removeClass(this.navPerfil?.nativeElement, "active");
+
 
         break;
       case "PACIENTES":
@@ -48,6 +51,8 @@ export class UsuariosComponent implements OnInit {
         this.renderer.removeClass(this.navEsp?.nativeElement, "active");
         this.renderer.removeClass(this.navAdmin?.nativeElement, "active");
         this.renderer.removeClass(this.navRegistro?.nativeElement, "active");
+        this.renderer.removeClass(this.navPerfil?.nativeElement, "active");
+
 
         break;
       case "ADMINS":
@@ -55,6 +60,8 @@ export class UsuariosComponent implements OnInit {
         this.renderer.removeClass(this.navEsp?.nativeElement, "active");
         this.renderer.removeClass(this.navPac?.nativeElement, "active");
         this.renderer.removeClass(this.navRegistro?.nativeElement, "active");
+        this.renderer.removeClass(this.navPerfil?.nativeElement, "active");
+
 
         break;
       case "USUARIOS":
@@ -62,12 +69,22 @@ export class UsuariosComponent implements OnInit {
         this.renderer.removeClass(this.navEsp?.nativeElement, "active");
         this.renderer.removeClass(this.navPac?.nativeElement, "active");
         this.renderer.removeClass(this.navRegistro?.nativeElement, "active");
+        this.renderer.removeClass(this.navPerfil?.nativeElement, "active");
+
         break;
       case "REGISTRO":
         this.renderer.addClass(this.navRegistro?.nativeElement, "active");
         this.renderer.removeClass(this.navAdmin?.nativeElement, "active");
         this.renderer.removeClass(this.navEsp?.nativeElement, "active");
         this.renderer.removeClass(this.navPac?.nativeElement, "active");
+        this.renderer.removeClass(this.navPerfil?.nativeElement, "active");
+        break;
+      case "PERFIL":
+        this.renderer.addClass(this.navPerfil?.nativeElement, "active");
+        this.renderer.removeClass(this.navAdmin?.nativeElement, "active");
+        this.renderer.removeClass(this.navEsp?.nativeElement, "active");
+        this.renderer.removeClass(this.navPac?.nativeElement, "active");
+        this.renderer.removeClass(this.navRegistro?.nativeElement, "active");
         break;
     }
   }

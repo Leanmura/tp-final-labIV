@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   tabla: string;
   currentUser: any;
   constructor(private auth: UserService, private router: Router) {
-    this.tabla = "HOME";
+    this.tabla = "PERFIL";
   }
 
   ngOnInit(): void {
