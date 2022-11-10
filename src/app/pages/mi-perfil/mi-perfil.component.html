@@ -1,0 +1,42 @@
+<div class="container">
+    <div id="container-ingreso">
+        <div id="circulo">
+            <ngx-spinner size="small" type="ball-8bits"
+                template="<img width='100px' src='https://acegif.com/wp-content/uploads/loading-13.gif'>">
+            </ngx-spinner>
+            <img id="perfil" src="{{foto}}" alt="">
+        </div>
+        <div *ngIf="perfil == 'Especialista'" id="">
+            <h3>{{especialista?.nombre + " " + especialista?.apellido}}</h3>
+            <h5>DNI: {{dni}}</h5>
+            <h5>Correo: {{correo}}</h5>
+            <h5>Perfil: {{perfil}}</h5>
+            <h5>Edad: {{edad}}</h5>
+            <h5>Especialidad: </h5>
+            <ul>
+                <li *ngFor="let especialidad of especialista?.especialidad">
+                    <h6> {{especialidad.nombre}}
+                    </h6>
+                </li>
+
+            </ul>
+        </div>
+        <div *ngIf="perfil == 'Admin'" id="">
+            <h3>{{nombre + " " + apellido}}</h3>
+            <h5>DNI: {{dni}}</h5>
+            <h5>Correo: {{correo}}</h5>
+            <h5>Perfil: {{perfil}}</h5>
+            <h5>Edad: {{edad}}</h5>
+        </div>
+        <div *ngIf="perfil == 'Paciente'" id="">
+            <h3>{{nombre + " " + apellido}}</h3>
+            <h5>DNI: {{dni}}</h5>
+            <h5>Correo: {{correo}}</h5>
+            <h5>Perfil: {{perfil}}</h5>
+            <h5>Edad: {{edad}}</h5>
+            <h5>Obra Social: {{obraSocial}}</h5>
+            <img src="{{img2}}">
+
+        </div>
+    </div>
+</div>

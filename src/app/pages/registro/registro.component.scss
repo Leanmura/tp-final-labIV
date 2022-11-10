@@ -1,0 +1,51 @@
+#container-registro {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-content: center;
+    grid-template-columns: 50% 50%;
+
+    .container-img-round {
+        display: grid;
+        justify-self: center;
+        align-self: center;
+        background-color: rgba(138, 138, 138, 0.452);
+        border: 10px solid black;
+        border-radius: 100%;
+        padding: 10px;
+        width: 500px;
+        height: 500px;
+        transition: all 0.3s ease;
+    }
+
+    img {
+        justify-self: center;
+        align-self: center;
+        width: 80%;
+    }
+
+    .container-img-round:hover {
+        display: grid;
+        justify-self: center;
+        align-self: center;
+        background-color: rgba(255, 255, 255, 0.452);
+        border: 10px solid black;
+        border-radius: 100%;
+        padding: 10px;
+        width: 600px;
+        height: 600px;
+        transition: all 0.3s ease;
+    }
+
+}
+
+#container-forms {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-content: center;
+    font-family: 'Kanit', sans-serif;
+    font-weight: bolder;
+}

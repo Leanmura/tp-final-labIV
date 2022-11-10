@@ -1,0 +1,20 @@
+<div id="container-registro" *ngIf="usuario == null">
+    <div class="container-img-round">
+        <img src="../../../assets/img/mascara-facial.png" alt="PACIENTE" title="PACIENTE" (click)="registroPaciente()">
+
+    </div>
+    <div class="container-img-round">
+        <img src="../../../assets/img/enfermera.png" alt="ESPECIALISTA" title="ESPECIALISTA"
+            (click)="registroEspecialista()">
+    </div>
+</div>
+<div id="container-forms">
+    <app-especialista *ngIf="usuario == 'especialista'">
+
+    </app-especialista>
+
+    <app-paciente *ngIf="usuario == 'paciente'">
+
+    </app-paciente>
+
+</div>

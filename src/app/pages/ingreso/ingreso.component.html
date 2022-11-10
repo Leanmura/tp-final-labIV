@@ -1,0 +1,38 @@
+<div class="container">
+    <div id="container-ingreso">
+        <h1>INGRESO</h1>
+        <form [formGroup]="formLog">
+            <div class="form-floating" id="email">
+                <input type="text" class="form-control" id="floatingEmail" placeholder="Correo electronico" name="email"
+                    formControlName="email">
+                <label for="floatingEmail">Correo electronico</label>
+                <small class="invalid" *ngIf="formLog.controls['email'].errors?.['required'] &&
+                                                              formLog.controls['email'].touched">El email es
+                    requerido</small>
+            </div>
+            <div class="form-floating" id="password">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Contraseña"
+                    formControlName="password" name="clave">
+                <label for="floatingPassword">Contraseña</label>
+                <small class="invalid" *ngIf="formLog.controls['password'].errors?.['required'] &&
+                                                              formLog.controls['password'].touched">La contraseña es
+                    requerida</small>
+            </div>
+
+            <div id="captcha">
+                <re-captcha (resolved)="resolved($event)" siteKey="6LfQ8tIiAAAAAGKJQl28loLfGzgvdK8THW4aQwvd">
+                </re-captcha>
+            </div>
+            <button id="btnIngresar" class="w-100 btn btn-lg btn-primary" type="submit" (click)="ingresar()"
+                [disabled]="!formLog.valid">Ingresar</button>
+        </form>
+        <div id="container-btns">
+            <img [src]="u.img" [alt]="u.nombre" class="img" *ngFor="let u of usuariosAccesoRapido" type="button"
+                id="ingresar" (click)="autoCompletar(u.correo, u.clave)">
+
+
+        </div>
+    </div>
+
+
+</div>

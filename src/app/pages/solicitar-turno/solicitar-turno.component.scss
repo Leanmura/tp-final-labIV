@@ -1,0 +1,47 @@
+.container {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    height: 100%;
+    color: beige;
+}
+
+#container-btns {
+    height: 86%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+}
+
+#button {
+    display: grid;
+}
+
+.img {
+    display: grid;
+    width: 180px;
+    height: 180px;
+    border: solid 1px black;
+    align-self: center;
+    justify-self: center;
+    contain: content;
+    justify-content: center;
+    margin: 10px;
+}
+
+#title {
+    height: 100px;
+    margin: auto;
+    color: beige;
+}
+
+#nombre {
+
+    margin: auto;
+    color: beige;
+}
+
+.red {
+    color: rgb(211, 0, 0);
+}

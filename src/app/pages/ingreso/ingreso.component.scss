@@ -1,0 +1,99 @@
+.container {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    height: 100%;
+}
+
+#container-ingreso {
+    width: 1200px;
+    height: 600px;
+    background-color: rgba(228, 228, 228, 0.726);
+    border-radius: 100px;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-rows: 20% 40% 40%;
+    grid-template-columns: 100%;
+    padding-bottom: 50px;
+
+    form {
+        height: 100%;
+        width: 100%;
+        display: grid;
+        grid-template-rows: 36% 43% 21%;
+        grid-template-columns: 50% 50%; //20% 20% 20% 20% 20%;
+        grid-template-areas:
+            "r w"
+            "c c"
+            "k k";
+        align-items: flex-start;
+        justify-items: center;
+        padding: 10%;
+        padding-top: 0;
+        padding-bottom: 0;
+
+        input,
+        label,
+        small {
+            font-weight: normal;
+        }
+
+        #email {
+            width: 90%;
+            grid-area: r;
+        }
+
+        #password {
+            grid-area: w;
+            width: 90%;
+        }
+
+        #btnIngresar {
+            grid-area: k;
+        }
+
+        #captcha {
+            grid-area: c;
+        }
+    }
+
+}
+
+.invalid {
+    color: red;
+}
+
+
+#container-btns {
+    height: 86%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 16.66% 16.66% 16.66% 16.66% 16.66% 16.66%;
+    grid-template-rows: 100%;
+}
+
+.button {
+    font-family: input-mono-narrow, monospace;
+    font-weight: bolder;
+    padding: 1rem 1.5rem;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 100%;
+    color: rgb(0, 0, 0);
+    font-size: xx-large;
+    background-color: transparent;
+    margin: 10px;
+    transition: all 0.3s ease;
+}
+
+.img {
+    display: grid;
+    border-radius: 200px;
+    width: 180px;
+    height: 180px;
+    border: solid 1px black;
+    align-self: center;
+    justify-self: center;
+    contain: content;
+    justify-content: center;
+}

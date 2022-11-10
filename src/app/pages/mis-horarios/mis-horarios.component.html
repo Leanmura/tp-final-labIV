@@ -1,0 +1,31 @@
+<div class="container">
+    <table id="tabla">
+        <thead>
+            <tr>
+                <th colspan="7"> MIS HORARIOS </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let horario of horarios; index as i">
+                <td *ngFor="let hora of horario; index as x">
+
+                    <span *ngIf="x == 0 || i == 0; else elseBlock">
+                        <p>{{hora}} </p>
+                    </span>
+                    <ng-template #elseBlock>
+                        <span *ngIf="hora; else elseBlock2">
+                            <button class="activo" (click)="cambiarEstado(i,x)">DISPONIBLE</button>
+                        </span>
+
+                        <ng-template #elseBlock2>
+                            <button class="no-activo" (click)="cambiarEstado(i,x)">OCUPADO</button>
+                        </ng-template>
+                    </ng-template>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="button" value="GUARDAR" (click)="guardarHorariosDisponibles()">
+
+</div>

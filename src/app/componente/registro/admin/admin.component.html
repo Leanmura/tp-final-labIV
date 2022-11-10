@@ -1,0 +1,102 @@
+<div id="container-forms">
+    <ngx-spinner size="small" type="ball-8bits"
+        template="<img width='100px' src='https://acegif.com/wp-content/uploads/loading-13.gif'>">
+    </ngx-spinner>
+    <div id="container-especialistas">
+        <h1>REGISTRO ADMINS</h1>
+        <form [formGroup]="formReg">
+
+            <div class="form-floating" id="nombre">
+                <input type="text" class="form-control" id="floatingNombre" placeholder="Nombre" name="nombre"
+                    formControlName="nombre">
+                <label for="floatingNombre">Nombre</label>
+                <small class="invalid" *ngIf="formReg.controls['nombre'].errors?.['required'] &&
+                                                          formReg.controls['nombre'].touched">El nombre es
+                    requerido</small>
+                <small class="invalid"
+                    *ngIf="formReg.controls['nombre'].errors?.['constainsSpaces'] || formReg.controls['nombre'].errors?.['hasNumbers'] &&
+                                                                                      formReg.controls['nombre'].touched">El nombre no
+                    debe contener espacios ni numeros</small>
+
+            </div>
+            <div class="form-floating" id="apellido">
+                <input type="text" class="form-control" id="floatingApellido" placeholder="Apellido"
+                    formControlName="apellido" name="apellido">
+                <label for="floatingApellido">Apellido</label>
+                <small class="invalid" *ngIf="formReg.controls['apellido'].errors?.['required'] &&
+                                      formReg.controls['apellido'].touched">El apellido es requerido</small>
+                <small class="invalid"
+                    *ngIf="formReg.controls['apellido'].errors?.['constainsSpaces'] || formReg.controls['apellido'].errors?.['hasNumbers'] &&
+                                                                                      formReg.controls['apellido'].touched">El apellido no
+                    debe contener espacios ni numeros</small>
+            </div>
+            <div class="form-floating" id="edad">
+                <input type="number" class="form-control" id="floatingEdad" placeholder="Edad" name="Edad"
+                    formControlName="edad">
+                <label for="floatingEdad">Edad</label>
+                <small class="invalid" *ngIf="formReg.controls['edad'].errors?.['required'] &&
+                                                          formReg.controls['edad'].touched">La edad es
+                    requerida</small>
+                <small class="invalid"
+                    *ngIf="formReg.controls['edad'].errors?.['min'] && formReg.controls['edad'].touched">Debe ser
+                    mayor</small>
+                <small class="invalid"
+                    *ngIf="formReg.controls['edad'].errors?.['max'] && formReg.controls['edad'].touched">Edad
+                    invalida</small>
+            </div>
+            <div class="form-floating" id="dni">
+                <input type="text" class="form-control" id="floatingDni" placeholder="DNI" formControlName="dni"
+                    name="dni" pattern="[0-9]{1,8}">
+                <label for="floatingDni">DNI</label>
+                <small class="invalid" *ngIf="formReg.controls['dni'].errors?.['required'] &&
+                                                          formReg.controls['dni'].touched">El dni es
+                    requerido</small>
+                <small class="invalid"
+                    *ngIf="formReg.controls['dni'].errors?.['pattern']&&
+                                                                                      formReg.controls['dni'].touched">El dni es
+                    invalido</small>
+            </div>
+
+            <div class="form-floating" id="email">
+                <input type="text" class="form-control" id="floatingEmail" placeholder="Correo electronico" name="email"
+                    formControlName="email">
+                <label for="floatingEmail">Correo electronico</label>
+                <small class="invalid" *ngIf="formReg.controls['email'].errors?.['required'] &&
+                                                          formReg.controls['email'].touched">El email es
+                    requerido</small>
+            </div>
+            <div class="form-floating" id="password">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Contraseña"
+                    formControlName="password" name="clave">
+                <label for="floatingPassword">Contraseña</label>
+                <small class="invalid" *ngIf="formReg.controls['password'].errors?.['required'] &&
+                                                          formReg.controls['password'].touched">La contraseña es
+                    requerida</small>
+            </div>
+            <div class="form-floating" id="copyPassword">
+                <input type="password" class="form-control" id="floatingConfirm" placeholder="Confirmar Contraseña"
+                    formControlName="copyPassword" name="copiaClave">
+                <label for="floatingPassword">Confirmar contraseña</label>
+
+                <small class="invalid" *ngIf="formReg.controls['copyPassword'].errors?.['required'] &&
+                                                          formReg.controls['copyPassword'].touched">Repita la
+                    contraseña</small>
+            </div>
+            <div id="imgcontainer">
+                <label for="img">Foto de perfil</label>
+                <div id="img" class="img">
+                    <input (change)="capturarFile($event)" type="file" class="" id="floatingImg"
+                        placeholder="Foto de perfil" formControlName="img" name="img" accept=".jpg, .jpeg">
+                    <div *ngIf="previsualizacion" id="previsualizacion" class="previsualizacion">
+                        <img height="100%" [src]="previsualizacion" alt="">
+                    </div>
+                </div>
+
+            </div>
+
+            <button id="btnCrear" class="w-100 btn btn-lg btn-primary" type="submit" (click)="registrar()"
+                [disabled]="!formReg.valid">Crear
+                cuenta</button>
+        </form>
+    </div>
+</div>

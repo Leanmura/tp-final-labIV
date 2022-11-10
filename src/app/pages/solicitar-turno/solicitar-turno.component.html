@@ -1,0 +1,53 @@
+<div class="container">
+
+
+    <h1 id="title">SOLICITAR TURNO</h1>
+
+
+
+    <container-element [ngSwitch]="tabla">
+        <span *ngSwitchCase="'ESPECIALISTAS'">
+            <h3>ESPECIALISTAS:</h3>
+            <div id="container-btns">
+                <div id="button" *ngFor="let u of especialistas">
+                    <img [src]="u.img" [alt]="u.nombre" class="img" type="button" (click)="clickEspecialista(u)">
+                    <h4 id="nombre">{{u.nombre + " " + u.apellido}}</h4>
+                </div>
+
+            </div>
+        </span>
+
+        <span *ngSwitchCase="'ESPECIALIDADES'">
+            <h3>ESPECIALIDADES:</h3>
+            <div id="container-btns">
+                <div id="button" *ngFor="let u of especialidades">
+
+                    <img [src]="u.foto" [alt]="u.nombre" class="img" type="button"
+                        (click)="clickEspecialidad(u.nombre)">
+                    <h4 id="nombre">{{u.nombre}}</h4>
+                </div>
+
+
+            </div>
+
+        </span>
+
+        <span *ngSwitchCase="'HORARIOS'">
+            <h3>Horarios del {{ especialidad.nombre + " " + especialista.nombre + " " + especialista.apellido}}:</h3>
+            <div *ngIf="horarios.length == 0">
+                <h4 class="red">No hay horarios disponibles</h4>
+            </div>
+            <div id="container-btns">
+                <div id="button" *ngFor="let u of horarios">
+                    <input type="button" value="">
+                    <h4 id="nombre">{{u}}</h4>
+                </div>
+
+
+            </div>
+
+        </span>
+    </container-element>
+
+
+</div>

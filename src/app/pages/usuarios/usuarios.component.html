@@ -1,0 +1,172 @@
+<div class="container-fluid py-5">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-transparent">
+        <div class="container-fluid">
+            <a class="navbar-brand" (click)="tabla = 'USUARIOS'; addMyClass()" #naxUsu>USUARIOS</a>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ">
+                    <li class="nav-item">
+                        <a #navEsp class="nav-link" aria-current="page"
+                            (click)="tabla = 'ESPECIALISTAS'; addMyClass()">ESPECIALISTAS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a #navPac class="nav-link" (click)="tabla = 'PACIENTES';addMyClass()">PACIENTES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a #navAdmin class="nav-link" (click)="tabla = 'ADMINS'; addMyClass()">ADMINS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a #navRegistro class="nav-link" (click)="tabla = 'REGISTRO'; addMyClass()">REGISTRO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="tabla = 'PERFIL'">MI PERFIL</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="logout" class="nav-link" (click)="logout()">CERRAR SESION</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <container-element [ngSwitch]="tabla">
+
+        <div *ngSwitchCase="'PACIENTES'">
+            <table class="table table-light">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>DNI</th>
+                        <th>Edad</th>
+                        <!-- <th>Obra Social</th> -->
+                        <th>Correo electronico</th>
+                        <th>clave</th>
+                        <th>Perfil</th>
+                        <th>Obra social</th>
+                        <th>Foto de perfil</th>
+                        <th>Foto de perfil</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let paciente of pacientes">
+                        <td>{{paciente.nombre}}</td>
+                        <td>{{paciente.apellido}}</td>
+                        <td>{{paciente.dni}}</td>
+                        <td>{{paciente.edad}}</td>
+                        <td>{{paciente.correo}}</td>
+                        <td>{{paciente.clave}}</td>
+                        <td>{{paciente.perfil}}</td>
+                        <td>{{paciente.obraSocial}}</td>
+                        <td><img height="100px" src="{{paciente.img}}" alt="{{paciente.nombre}}"></td>
+                        <td><img height="100px" src="{{paciente.img2}}" alt="{{paciente.nombre}}"></td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div *ngSwitchCase="'ESPECIALISTAS'">
+
+            <table class="table table-light">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>DNI</th>
+                        <th>Edad</th>
+                        <th>Correo electronico</th>
+                        <th>clave</th>
+                        <th>Perfil</th>
+                        <th>Especialidad</th>
+                        <th>Foto de perfil</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let especialista of especialistas">
+                        <td>{{especialista.nombre}}</td>
+                        <td>{{especialista.apellido}}</td>
+                        <td>{{especialista.dni}}</td>
+                        <td>{{especialista.edad}}</td>
+                        <td>{{especialista.correo}}</td>
+                        <td>{{especialista.clave}}</td>
+                        <td>{{especialista.perfil}}</td>
+                        <td>
+                            <p *ngFor="let espec of especialista.especialidad">{{espec.nombre}}</p>
+                        </td>
+                        <td><img height="100px" src="{{especialista.img}}" alt="{{especialista.nombre}}">
+                        </td>
+                        <td *ngIf="especialista.activo; else elseBlock">
+                            <button class="no-activo" (click)="cambiarEstado(especialista)">DESACTIVAR</button>
+                        </td>
+                        <ng-template #elseBlock>
+                            <td><button class="activo" (click)="cambiarEstado(especialista)">ACTIVAR</button></td>
+                        </ng-template>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div *ngSwitchCase="'ADMINS'">
+
+            <table class="table table-light">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>DNI</th>
+                        <th>Edad</th>
+                        <th>Correo electronico</th>
+                        <th>clave</th>
+                        <th>Perfil</th>
+                        <th>Foto de perfil</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let admin of admins">
+                        <td>{{admin.nombre}}</td>
+                        <td>{{admin.apellido}}</td>
+                        <td>{{admin.dni}}</td>
+                        <td>{{admin.edad}}</td>
+                        <td>{{admin.correo}}</td>
+                        <td>{{admin.clave}}</td>
+                        <td>{{admin.perfil}}</td>
+                        <td><img height="100px" src="{{admin.img}}" alt="{{admin.nombre}}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div *ngSwitchCase="'USUARIOS'">
+            <table class="table table-light">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>DNI</th>
+                        <th>Edad</th>
+                        <th>Correo electronico</th>
+                        <th>clave</th>
+                        <th>Perfil</th>
+                        <th>Foto de perfil</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let usuario of usuarios">
+                        <td>{{usuario.nombre}}</td>
+                        <td>{{usuario.apellido}}</td>
+                        <td>{{usuario.dni}}</td>
+                        <td>{{usuario.edad}}</td>
+                        <td>{{usuario.correo}}</td>
+                        <td>{{usuario.clave}}</td>
+                        <td>{{usuario.perfil}}</td>
+                        <td><img height="100px" src="{{usuario.img}}" alt="{{usuario.nombre}}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <app-admin *ngSwitchCase="'REGISTRO'"></app-admin>
+        <app-mi-perfil *ngSwitchCase="'PERFIL'"></app-mi-perfil>
+    </container-element>
+
+
+</div>

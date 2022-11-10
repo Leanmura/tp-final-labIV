@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    background-image: url("/assets/backgrounds/backgroundHome.jpg");
+}
+
+#filtro {
+    background-color: rgba(0, 0, 0, 0.37);
+    width: 100%;
+    height: 939px;
+    max-height: 939px;
+}

@@ -1,0 +1,17 @@
+<h4 class="d-flex justify-content-between align-items-center mb-3">
+    <span class="text-primary">Elija la o las especialidades</span>
+</h4>
+<div style="height: 320px;overflow-y: scroll;">
+    <ul class="list-group mb-3">
+        <li style="cursor: pointer;" class="list-group-item d-flex justify-content-between lh-sm"
+            *ngFor="let especialidad of especialidades; index as i" (click)="seleccionarEspecialidad(especialidad)">
+            <div>
+                <h6 class="my-0">{{especialidad.nombre}}</h6>
+            </div>
+
+            <img *ngIf="especialidad.foto != ''" width="20%" height="20%" src="{{especialidad.foto}}">
+            <img *ngIf="especialidad.foto == ''" width="20%" height="20%" src="../../assets/img/archivo.png">
+
+        </li>
+    </ul>
+</div>
