@@ -27,6 +27,9 @@ import { EspecialidadComponent } from './componente/especialidad/especialidad.co
 import { MisTurnosComponent } from './pages/mis-turnos/mis-turnos.component';
 import { SolicitarTurnoComponent } from './pages/solicitar-turno/solicitar-turno.component';
 import { MisHorariosComponent } from './pages/mis-horarios/mis-horarios.component';
+import { PacienteTurnosComponent } from './pages/mis-turnos/paciente-turnos/paciente-turnos.component';
+import { RouterModule } from '@angular/router';
+import { EspecialistaTurnosComponent } from './pages/mis-turnos/especialista-turnos/especialista-turnos.component';
 
 @NgModule({
   declarations: [
@@ -43,8 +46,10 @@ import { MisHorariosComponent } from './pages/mis-horarios/mis-horarios.componen
     MiPerfilComponent,
     EspecialidadComponent,
     MisTurnosComponent,
-    SolicitarTurnoComponent,
     MisHorariosComponent,
+    PacienteTurnosComponent,
+    SolicitarTurnoComponent,
+    EspecialistaTurnosComponent
   ],
   imports: [
     BrowserModule,

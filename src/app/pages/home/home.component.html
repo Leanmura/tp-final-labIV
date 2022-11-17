@@ -8,12 +8,13 @@
                 <li class="nav-item" *ngIf="currentUser['perfil'] == 'Especialista'; else elseBlock">
                     <a class="nav-link" (click)="tabla = 'HORARIOS'">MIS HORARIOS</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" (click)="tabla = 'TURNOS'">MIS TURNOS</a>
+                </li>
                 <ng-template #elseBlock>
                     <li class="nav-item">
-                        <a class="nav-link" (click)="tabla = 'TURNOS'">MIS TURNOS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" (click)="tabla = 'SOLICITAR'">SOLICITAR TURNO</a>
+                        <a class="nav-link" (click)="tabla = 'SOLICITAR'">SOLICITAR
+                            TURNO</a>
                     </li>
 
                 </ng-template>

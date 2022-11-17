@@ -4,6 +4,7 @@ import { arrayUnion, collection, doc, Firestore, getDoc, getDocs, query, setDoc,
 import { getFirestore } from '@firebase/firestore';
 import { Especialidad } from 'src/app/clases/especialidad';
 import { EspecialidadService } from 'src/app/services/especialidad.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-mis-horarios',
@@ -98,8 +99,19 @@ export class MisHorariosComponent implements OnInit {
     try {
       const docRef = doc(this.firestore, `users/${this.auth.currentUser?.uid}`);
       await updateDoc(docRef, { "horarios": horariosDisponibles });
+      Swal.fire({
+        title: "Horarios guardados con exito.",
+        icon: 'success',
+        confirmButtonText: 'Ok'
+      });
       return true;
     } catch (e) {
+      Swal.fire({
+        title: "Hubo un error.",
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      });
+      console.log(e);
       return e;
     }
   }

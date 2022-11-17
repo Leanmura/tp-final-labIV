@@ -1,3 +1,6 @@
+<ngx-spinner size="small" type="ball-8bits"
+    template="<img width='100px' src='https://acegif.com/wp-content/uploads/loading-13.gif'>">
+</ngx-spinner>
 <div class="container">
 
 
@@ -34,13 +37,12 @@
 
         <span *ngSwitchCase="'HORARIOS'">
             <h3>Horarios del {{ especialidad.nombre + " " + especialista.nombre + " " + especialista.apellido}}:</h3>
-            <div *ngIf="horarios.length == 0">
+            <div *ngIf="turnos.length == 0">
                 <h4 class="red">No hay horarios disponibles</h4>
             </div>
             <div id="container-btns">
-                <div id="button" *ngFor="let u of horarios">
-                    <input type="button" value="">
-                    <h4 id="nombre">{{u}}</h4>
+                <div id="button" *ngFor="let u of turnos">
+                    <input class="buttonH" type="button" [value]="u" (click)="pedirTurno(u)">
                 </div>
 
 

@@ -8,6 +8,7 @@ import { canActivate, redirectLoggedInTo, redirectUnauthorizedTo, } from '@angul
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { AdminGuard } from './guards/admin.guard';
 import { MiPerfilComponent } from './pages/mi-perfil/mi-perfil.component';
+import { SolicitarTurnoComponent } from './pages/solicitar-turno/solicitar-turno.component';
 
 const routes: Routes = [
   {

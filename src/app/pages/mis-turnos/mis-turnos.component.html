@@ -1,4 +1,10 @@
-<p>mis-turnos works!</p>
-<h1>asdasda</h1>
-<h1>asdasda</h1>
-<h1>mis-turnos works!</h1>
+<div id="container-forms">
+    <app-especialista-turnos *ngIf="perfil == 'Especialista'">
+
+    </app-especialista-turnos>
+
+    <app-paciente-turnos *ngIf="perfil == 'Paciente'">
+
+    </app-paciente-turnos>
+
+</div>

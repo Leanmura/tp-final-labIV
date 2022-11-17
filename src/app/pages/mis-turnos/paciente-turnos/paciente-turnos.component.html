@@ -1,0 +1,59 @@
+<div class="container">
+
+
+    <h1 id="title">MIS TURNOS</h1>
+
+    <h3>ESPECIALISTAS:</h3>
+    <div id="container-btns">
+        <div class="buttonH" id="button" *ngFor="let u of especialistas">
+            <h4 class="text" (click)="clickEspecialista(u)">{{u.nombre + " " + u.apellido}}</h4>
+        </div>
+
+    </div>
+    <br>
+    <h3>ESPECIALIDADES:</h3>
+    <div id="container-btns">
+        <div class="buttonH" id="button" *ngFor="let u of especialidades">
+            <h4 class="text" (click)="clickEspecialidad()">{{u.nombre}}</h4>
+        </div>
+    </div>
+    <br>
+
+    <div>
+        <table class="table table-light">
+            <thead class="thead-light">
+                <tr>
+                    <th>Horario</th>
+                    <th>Especialista</th>
+                    <th>Estado</th>
+                    <th>Especialidad</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let turno of turnosEnCurso">
+                    <td>{{turno.horario}}</td>
+                    <td>{{turno.especialista.apellido}}</td>
+                    <td [ngSwitch]="turno.estado">
+                        <p *ngSwitchCase="0">Aceptado</p>
+                        <p *ngSwitchCase="1">Realizado</p>
+                        <p *ngSwitchCase="2">Cancelado</p>
+                        <p *ngSwitchCase="3">Rechazado</p>
+                        <p *ngSwitchCase="4">Espera</p>
+                    </td>
+                    <td>{{turno.especialidad.nombre}}</td>
+                    <td *ngIf="turno.estado != 1"> <button class="cancel" (click)="cancelar(turno)"> Cancelar</button>
+                    </td>
+                    <td *ngIf="turno.resenia"> <button class="info" (click)="verResenia(turno)"> Ver Reseña</button>
+                    </td>
+                    <td *ngIf="turno.estado == 1 && turno.resenia"> <button class="info"> Encuesta</button></td>
+                    <td *ngIf="turno.estado == 1"> <button class="info"> Calificar </button></td>
+                    <!-- 
+                    <td><img height="100px" src="{{turno.img}}" alt="{{turno.nombre}}"></td>
+                    <td><img height="100px" src="{{turno.img2}}" alt="{{turno.nombre}}"></td> -->
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
