@@ -13,15 +13,21 @@ import { SolicitarTurnoComponent } from './pages/solicitar-turno/solicitar-turno
 const routes: Routes = [
   {
     path: "bienvenida", component: BienvenidaComponent,
-    ...canActivate(() => redirectLoggedInTo(['/home']))
+    ...canActivate(() => redirectLoggedInTo(['/home'])),
+
   },
   {
     path: "registro", component: RegistroComponent,
-    ...canActivate(() => redirectLoggedInTo(['/home']))
+    //data: { animation: 'registro' },
+    //...canActivate(() => redirectLoggedInTo(['/home'])),
+
+
   },
   {
     path: "ingreso", component: IngresoComponent,
-    ...canActivate(() => redirectLoggedInTo(['/home']))
+    //data: { animation: 'registro' },
+
+    // ...canActivate(() => redirectLoggedInTo(['/home']))
   },
   {
     path: "home", component: HomeComponent,
@@ -37,7 +43,11 @@ const routes: Routes = [
   },
   {
     path: "", component: BienvenidaComponent,
-    ...canActivate(() => redirectLoggedInTo(['/home']))
+    //data: { animation: 'bienvenida' },
+
+
+
+
   },
 
 

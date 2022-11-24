@@ -2,22 +2,49 @@
 
 ## Bienvenida
 ![This is an image](https://github.com/Leanmura/tp-final-labIV/blob/master/capturas/bienvenida.png)
-## Code scaffolding
+Pantalla principal, donde el usuario podra ingresar o registrarse.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Registro
+![This is an image](https://github.com/Leanmura/tp-final-labIV/blob/master/capturas/bienvenida2.png)
 
-## Build
+Al pulsar en Registrarme, el usuario vera dos opciones, la primera para registrarse como Paciente, y la segunda para registrarse como Especialista:
+![This is an image](https://github.com/Leanmura/tp-final-labIV/blob/master/capturas/registro.png)
+![This is an image](https://github.com/Leanmura/tp-final-labIV/blob/master/capturas/registro2.png)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+#### Paciente
+Si selecciona la opcion de Paciente, se le mostrara el siguiente formulario:
+![This is an image](https://github.com/Leanmura/tp-final-labIV/blob/master/capturas/registroPaciente1.png)
+![This is an image](https://github.com/Leanmura/tp-final-labIV/blob/master/capturas/registroPaciente2.png)
+Todos los campos, tendran una validacion, para corroborar que estos sean correctos.
 
-## Running unit tests
+#### Especialista
+Si selecciona la opcion de Especialista, se le mostrara este otro formulario:
+![This is an image](https://github.com/Leanmura/tp-final-labIV/blob/master/capturas/registroEspecialista.png)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Ingreso
+![This is an image](https://github.com/Leanmura/tp-final-labIV/blob/master/capturas/bienvenida1.png)
 
-## Running end-to-end tests
+Al pulsar en Ingresar, el usuario vera un formulario de ingreso:
+![This is an image](https://github.com/Leanmura/tp-final-labIV/blob/master/capturas/ingreso.png)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+![This is an image](https://github.com/Leanmura/tp-final-labIV/blob/master/capturas/ingreso2.png)
+El usuario debera verificar, mediante el recapcha, que no es un robot.
 
-## Further help
+## Ingreso como Administrador
+![This is an image](https://github.com/Leanmura/tp-final-labIV/blob/master/capturas/usuarios1.png)
+Al ingresar como administrador se mostrara una tabla con todos los usuarios del sistema.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+El Administrador podra seleccionar, el tipo de usuario que quiere mostrar en la tabla, mediante los botones en la barra superior.
+![This is an image](https://github.com/Leanmura/tp-final-labIV/blob/master/capturas/usuarios2.png)
+![This is an image](https://github.com/Leanmura/tp-final-labIV/blob/master/capturas/usuarios3.png)
+![This is an image](https://github.com/Leanmura/tp-final-labIV/blob/master/capturas/usuarios4.png)
+
+Si el Administrador pulsa el boton "Registro" podra registrar un administrador.
+![This is an image](https://github.com/Leanmura/tp-final-labIV/blob/master/capturas/usuarios5.png)
+
+El ultimo boton que esta en la barra superior corresponde al de "Mi perfil", en este el administrador podra ver toda su informacion registrada en el sistema.
+![This is an image](https://github.com/Leanmura/tp-final-labIV/blob/master/capturas/usuarios6.png)
+
+
+
+

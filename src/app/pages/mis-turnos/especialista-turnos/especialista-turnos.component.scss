@@ -36,3 +36,86 @@
     background-color: rgb(148, 0, 0);
     color: white;
 }
+
+#container-ingreso {
+    width: 1200px;
+    height: 500px;
+    background-color: #F8F9FA;
+    color: black;
+    border-radius: 10px;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-rows: 20% 80%;
+    grid-template-columns: 100%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+
+    form {
+        height: 100%;
+        width: 100%;
+        display: grid;
+        grid-template-rows: 25% 25% 25% 25%;
+        grid-template-columns: 25% 25% 25% 25%; //20% 20% 20% 20% 20%;
+        grid-template-areas:
+            "d d d d"
+            "r w a b"
+            "c c v v"
+            "k k k k";
+        align-items: flex-start;
+        justify-items: center;
+        padding: 10%;
+        padding-top: 0;
+        padding-bottom: 0;
+
+        input,
+        label,
+        small {
+            font-weight: normal;
+        }
+
+        #Altura {
+            width: 90%;
+            grid-area: r;
+        }
+
+        #Peso {
+            grid-area: w;
+            width: 90%;
+        }
+
+        #Presion {
+            grid-area: b;
+            width: 90%;
+        }
+
+        #Temperatura {
+            grid-area: a;
+            width: 90%;
+        }
+
+        #Clave {
+            grid-area: c;
+            width: 90%;
+        }
+
+        #Valor {
+            grid-area: v;
+            width: 90%;
+        }
+
+        #Diagnostico {
+            grid-area: d;
+            width: 90%;
+        }
+
+        #btnIngresar {
+            grid-area: k;
+        }
+    }
+
+}
+
+.invalid {
+    color: red;
+}

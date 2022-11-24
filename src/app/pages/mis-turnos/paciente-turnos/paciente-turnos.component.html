@@ -3,20 +3,8 @@
 
     <h1 id="title">MIS TURNOS</h1>
 
-    <h3>ESPECIALISTAS:</h3>
-    <div id="container-btns">
-        <div class="buttonH" id="button" *ngFor="let u of especialistas">
-            <h4 class="text" (click)="clickEspecialista(u)">{{u.nombre + " " + u.apellido}}</h4>
-        </div>
-
-    </div>
-    <br>
-    <h3>ESPECIALIDADES:</h3>
-    <div id="container-btns">
-        <div class="buttonH" id="button" *ngFor="let u of especialidades">
-            <h4 class="text" (click)="clickEspecialidad()">{{u.nombre}}</h4>
-        </div>
-    </div>
+    <h3>FILTRO:</h3>
+    <input type="text" name="filtro" id="" [(ngModel)]="filtro" (ngModelChange)="filtrar()">
     <br>
 
     <div>
@@ -28,10 +16,13 @@
                     <th>Estado</th>
                     <th>Especialidad</th>
                     <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let turno of turnosEnCurso">
+                <tr *ngFor="let turno of turnosEnCursoFiltro">
                     <td>{{turno.horario}}</td>
                     <td>{{turno.especialista.apellido}}</td>
                     <td [ngSwitch]="turno.estado">
@@ -42,12 +33,23 @@
                         <p *ngSwitchCase="4">Espera</p>
                     </td>
                     <td>{{turno.especialidad.nombre}}</td>
-                    <td *ngIf="turno.estado != 1"> <button class="cancel" (click)="cancelar(turno)"> Cancelar</button>
+                    <td *ngIf="turno.estado ==4;else elseBlock"> <button class="cancel" (click)="cancelar(turno)">
+                            Cancelar</button>
                     </td>
-                    <td *ngIf="turno.resenia"> <button class="info" (click)="verResenia(turno)"> Ver Reseña</button>
+                    <td *ngIf="turno.resenia;else elseBlock"> <button class="info" (click)="verResenia(turno)">
+                            Reseña</button>
                     </td>
-                    <td *ngIf="turno.estado == 1 && turno.resenia"> <button class="info"> Encuesta</button></td>
-                    <td *ngIf="turno.estado == 1"> <button class="info"> Calificar </button></td>
+
+                    <td *ngIf="turno.estado == 1 && turno.resenia;else elseBlock" (click)="encuesta(turno)"> <button
+                            class="info">
+                            Encuesta</button></td>
+
+                    <td *ngIf="turno.estado == 1;else elseBlock"> <button class="info" (click)="calificar(turno)">
+                            Calificar
+                        </button></td>
+                    <ng-template #elseBlock>
+                        <td></td>
+                    </ng-template>
                     <!-- 
                     <td><img height="100px" src="{{turno.img}}" alt="{{turno.nombre}}"></td>
                     <td><img height="100px" src="{{turno.img2}}" alt="{{turno.nombre}}"></td> -->

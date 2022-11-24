@@ -177,7 +177,7 @@ export class SolicitarTurnoComponent implements OnInit {
     //   this.currentUser['img'], this.currentUser['clave'], this.currentUser['img2'], this.currentUser['obraSocial']);
     // console.table(paciente);
 
-    let turno = new Turno(fechaYhora, Estado.espera, "", "", "", this.currentUser, this.especialista, this.especialidad);
+    let turno = new Turno(fechaYhora, Estado.espera, "", "", "", this.currentUser, this.especialista, this.especialidad, "");
     this.spinner.show();
     this.turnoService.createTurno(turno).then(() => {
       this.spinner.hide();

@@ -9,11 +9,12 @@ export class Turno {
     comentarioCancelado: string;
     resenia: string;
     comentarioAtencion: string;
+    comentarioRechazado: string;
     paciente: Paciente;
     especialista: Especialista;
     especialidad: Especialidad;
 
-    constructor(horario: Date, estado: Estado, comentarioCancelado: string, resenia: string, comentarioAtencion: string, paciente: Paciente, especialista: Especialista, especialidad: Especialidad) {
+    constructor(horario: Date, estado: Estado, comentarioCancelado: string, resenia: string, comentarioAtencion: string, paciente: Paciente, especialista: Especialista, especialidad: Especialidad, comentarioRechazado: string) {
         this.id = horario.toString() + ' ' + paciente.uid + ' ' + especialista.uid;
         this.horario = horario;
         this.estado = estado;
@@ -23,6 +24,7 @@ export class Turno {
         this.paciente = paciente;
         this.especialista = especialista;
         this.especialidad = especialidad;
+        this.comentarioRechazado = comentarioRechazado;
     }
 }
 

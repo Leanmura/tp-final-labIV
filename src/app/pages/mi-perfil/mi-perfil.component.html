@@ -38,5 +38,15 @@
             <img src="{{img2}}">
 
         </div>
+
+    </div>
+    <div id="container-historial" *ngIf="historial">
+        <h3>HISTORIAL CLINICO</h3>
+        <h5>Altura: {{historial.altura}}</h5>
+        <h5>Peso: {{historial.peso}}</h5>
+        <h5>Temperatura: {{historial.temperatura}}</h5>
+        <h5>Presion: {{historial.presion}}</h5>
+        <h5 *ngFor="let dato of historial.datosDinamicos">{{dato.clave + ": " + dato.valor}}</h5>
+
     </div>
 </div>

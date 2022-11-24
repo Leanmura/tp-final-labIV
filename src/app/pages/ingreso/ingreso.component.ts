@@ -45,24 +45,6 @@ export class IngresoComponent implements OnInit {
     this.captcha = '';
   }
 
-  //////// CUSTON VALIDATOR /////////
-  private spacesValidator(control: AbstractControl): null | object {
-    const nombre: string = <string>control.value;
-    const spaces: boolean = nombre.includes(' ');
-    return spaces ? { constainsSpaces: true } : null;
-  }
-
-  private numberValidator(control: AbstractControl): null | object {
-    const numero: string = <string>control.value;
-    let hasNumber: boolean = false;
-    for (let i = 0; i < 10; i++) {
-      if (numero.includes(i.toString())) {
-        hasNumber = true;
-      }
-    }
-    return hasNumber ? { hasNumbers: true } : null;
-  }
-
   ngOnInit(): void {
   }
 

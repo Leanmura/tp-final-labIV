@@ -30,6 +30,7 @@ import { MisHorariosComponent } from './pages/mis-horarios/mis-horarios.componen
 import { PacienteTurnosComponent } from './pages/mis-turnos/paciente-turnos/paciente-turnos.component';
 import { RouterModule } from '@angular/router';
 import { EspecialistaTurnosComponent } from './pages/mis-turnos/especialista-turnos/especialista-turnos.component';
+import { InformesComponent } from './pages/informes/informes.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { EspecialistaTurnosComponent } from './pages/mis-turnos/especialista-tur
     MisHorariosComponent,
     PacienteTurnosComponent,
     SolicitarTurnoComponent,
-    EspecialistaTurnosComponent
+    EspecialistaTurnosComponent,
+    InformesComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +64,7 @@ import { EspecialistaTurnosComponent } from './pages/mis-turnos/especialista-tur
     provideStorage(() => getStorage()),
     BrowserAnimationsModule,
     NgxSpinnerModule,
-    RecaptchaModule
+    RecaptchaModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

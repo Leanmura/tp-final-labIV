@@ -1,3 +1,4 @@
+import { Xliff } from '@angular/compiler';
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { doc, Firestore, updateDoc } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
@@ -6,6 +7,8 @@ import { Especialista } from 'src/app/clases/especialista';
 import { Paciente } from 'src/app/clases/paciente';
 import { Usuario } from 'src/app/clases/usuario';
 import { UserService } from 'src/app/services/user.service';
+import * as XLXS from 'xlsx';
+
 
 @Component({
   selector: 'app-usuarios',
@@ -19,6 +22,7 @@ export class UsuariosComponent implements OnInit {
   admins: Admin[] = [];
   tabla: string;
   color: string = '';
+  fileName = 'usuarios.xlsx';
   @ViewChild("navEsp") navEsp: ElementRef | undefined;
   @ViewChild("navPac") navPac: ElementRef | undefined;
   @ViewChild("navAdmin") navAdmin: ElementRef | undefined;
@@ -135,5 +139,15 @@ export class UsuariosComponent implements OnInit {
   logout() {
     this.auth.logout();
     this.router.navigateByUrl("/bienvenida");
+  }
+
+  exportexcel() {
+    let element = document.getElementById('excel-table');
+    const ws: XLXS.WorkSheet = XLXS.utils.table_to_sheet(element);
+
+    const wb: XLXS.WorkBook = XLXS.utils.book_new();
+    XLXS.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    XLXS.writeFile(wb, this.fileName);
   }
 }

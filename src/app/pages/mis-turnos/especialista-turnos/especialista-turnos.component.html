@@ -3,21 +3,8 @@
 
     <h1 id="title">MIS TURNOS</h1>
 
-    <h3>ESPECIALIDADES:</h3>
-    <div id="container-btns">
-        <div class="buttonH" id="button" *ngFor="let u of especialidades">
-            <h4 class="text" (click)="clickEspecialidad()">{{u.nombre}}</h4>
-        </div>
-    </div>
-    <br>
-
-    <h3>PACIENTES:</h3>
-    <div id="container-btns">
-        <div class="buttonH" id="button" *ngFor="let u of pacientes">
-            <h4 class="text" (click)="clickEspecialista(u)">{{u.nombre + " " + u.apellido}}</h4>
-        </div>
-
-    </div>
+    <h3>FILTRO:</h3>
+    <input type="text" name="filtro" id="" [(ngModel)]="filtro" (ngModelChange)="filtrar()">
     <br>
 
     <div>
@@ -25,7 +12,7 @@
             <thead class="thead-light">
                 <tr>
                     <th>Horario</th>
-                    <th>Especialista</th>
+                    <th>Paciente</th>
                     <th>Estado</th>
                     <th>Especialidad</th>
                     <th></th>
@@ -33,12 +20,13 @@
                     <th></th>
                     <th></th>
                     <th></th>
+
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let turno of turnosEnCurso">
+                <tr *ngFor="let turno of turnosEnCursoFiltro">
                     <td>{{turno.horario}}</td>
-                    <td>{{turno.especialista.apellido}}</td>
+                    <td>{{turno.paciente.apellido}}</td>
                     <td [ngSwitch]="turno.estado">
                         <p *ngSwitchCase="0">Aceptado</p>
                         <p *ngSwitchCase="1">Realizado</p>
@@ -48,7 +36,7 @@
                     </td>
                     <td>{{turno.especialidad.nombre}}</td>
 
-                    <td *ngIf="turno.estado == 4;else elseBlock"> <button class="cancel" (click)="cancelar(turno)">
+                    <td *ngIf="turno.estado == 0;else elseBlock"> <button class="cancel" (click)="cancelar(turno)">
                             Cancelar</button>
                     </td>
 
@@ -68,6 +56,7 @@
                             Reseña</button>
                     </td>
 
+
                     <ng-template #elseBlock>
                         <td></td>
                     </ng-template>
@@ -78,5 +67,90 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <div *ngIf="historial">
+        <div id="container-ingreso">
+            <h1>Historia clinica</h1>
+            <form [formGroup]="formHistorial">
+
+                <div class="form-floating" id="Diagnostico">
+                    <input type="text" class="form-control" id="floatingDiagnostico" placeholder="Correo electronico"
+                        name="Diagnostico" formControlName="Diagnostico">
+                    <label for="floatingDiagnostico">Diagnostico</label>
+                    <small class="invalid" *ngIf="formHistorial.controls['Diagnostico'].errors?.['required'] &&
+                                                                  formHistorial.controls['Diagnostico'].touched">La
+                        Diagnostico
+                        es
+                        requerido</small>
+                </div>
+
+                <div class="form-floating" id="Altura">
+                    <input type="number" class="form-control" id="floatingAltura" placeholder="Correo electronico"
+                        name="Altura" formControlName="Altura">
+                    <label for="floatingAltura">Altura</label>
+                    <small class="invalid" *ngIf="formHistorial.controls['Altura'].errors?.['required'] &&
+                                                                  formHistorial.controls['Altura'].touched">La Altura
+                        es
+                        requerido</small>
+                </div>
+                <div class="form-floating" id="Peso">
+                    <input type="number" class="form-control" id="floatingPeso" placeholder="Contraseña"
+                        formControlName="Peso" name="clave">
+                    <label for="floatingPeso">Peso</label>
+                    <small class="invalid" *ngIf="formHistorial.controls['Peso'].errors?.['required'] &&
+                                                                  formHistorial.controls['Peso'].touched">El
+                        peso
+                        es
+                        requerida</small>
+                </div>
+                <div class="form-floating" id="Temperatura">
+                    <input type="number" class="form-control" id="floatingTemperatura" placeholder="Contraseña"
+                        formControlName="Temperatura" name="clave">
+                    <label for="floatingTemperatura">Temperatura</label>
+                    <small class="invalid" *ngIf="formHistorial.controls['Temperatura'].errors?.['required'] &&
+                                                                  formHistorial.controls['Temperatura'].touched">La
+                        temperatura
+                        es
+                        requerida</small>
+                </div>
+
+                <div class="form-floating" id="Presion">
+                    <input type="number" class="form-control" id="floatingPresion" placeholder="Contraseña"
+                        formControlName="Presion" name="clave">
+                    <label for="floatingPresion">Presion</label>
+                    <small class="invalid" *ngIf="formHistorial.controls['Presion'].errors?.['required'] &&
+                                                                  formHistorial.controls['Presion'].touched">La
+                        presion
+                        es
+                        requerida</small>
+                </div>
+
+                <div class="form-floating" id="Clave">
+                    <input type="text" class="form-control" id="floatingClave" placeholder="Contraseña"
+                        formControlName="Clave" name="clave">
+                    <label for="floatingClave">Clave</label>
+                    <small class="invalid" *ngIf="formHistorial.controls['Clave'].errors?.['required'] &&
+                                                                  formHistorial.controls['Clave'].touched">La
+                        clave
+                        es
+                        requerida</small>
+                </div>
+
+                <div class="form-floating" id="Valor">
+                    <input type="text" class="form-control" id="floatingValor" placeholder="Contraseña"
+                        formControlName="Valor" name="clave">
+                    <label for="floatingValor">Valor</label>
+                    <small class="invalid" *ngIf="formHistorial.controls['Valor'].errors?.['required'] &&
+                                                                  formHistorial.controls['Valor'].touched">El
+                        valor
+                        es
+                        requerida</small>
+                </div>
+
+                <button id="btnIngresar" class="w-100 btn btn-lg btn-primary" type="submit" (click)="guardar()"
+                    [disabled]="!formHistorial.valid">Guardar</button>
+            </form>
+        </div>
     </div>
 </div>

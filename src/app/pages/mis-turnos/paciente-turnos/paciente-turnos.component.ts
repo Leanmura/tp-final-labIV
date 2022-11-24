@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Timestamp } from '@angular/fire/firestore';
+import { stringLength } from '@firebase/util';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Especialidad } from 'src/app/clases/especialidad';
 import { Especialista } from 'src/app/clases/especialista';
@@ -15,21 +16,15 @@ import Swal from 'sweetalert2';
   styleUrls: ['./paciente-turnos.component.scss']
 })
 export class PacienteTurnosComponent implements OnInit {
-  especialistas: Especialista[] = [];
-  especialidades: Especialidad[] = [];
   turnosEnCurso: Turno[] = [];
+  turnosEnCursoFiltro: Turno[] = [];
+  filtro: string = '';
   constructor(private especialidadService: EspecialidadService,
     private userService: UserService,
     private turnoService: TurnoService,
     private spinner: NgxSpinnerService) {
 
-    userService.getEspecialistas().subscribe(dato => {
-      this.especialistas = dato;
-    });
 
-    especialidadService.getEspecialidades().subscribe((dato) => {
-      this.especialidades = dato;
-    });
   }
 
   ngOnInit(): void {
@@ -41,11 +36,29 @@ export class PacienteTurnosComponent implements OnInit {
         turno.horario = ts.toDate();
       })
       this.turnosEnCurso = dato;
+      this.turnosEnCursoFiltro = this.turnosEnCurso;
     });
   }
 
-  clickEspecialista(especialista: Especialista) { }
-  clickEspecialidad() { }
+  filtrar() {
+    console.log(this.filtro);
+
+    this.turnosEnCursoFiltro = this.turnosEnCurso.filter(turno => {
+      return turno.especialidad.nombre.trim().toLowerCase().includes(this.filtro.trim().toLowerCase()) ||
+        turno.paciente.nombre.trim().toLowerCase().includes(this.filtro.trim().toLowerCase()) ||
+        turno.paciente.apellido.trim().toLowerCase().includes(this.filtro.trim().toLowerCase());
+
+      console.log(turno.especialidad.nombre.trim().toLowerCase() + " tiene " + this.filtro.trim().toLowerCase() + " " + turno.especialidad.nombre.trim().toLowerCase().includes(this.filtro.trim().toLowerCase()))
+    });
+    console.log(this.turnosEnCursoFiltro);
+
+    if (this.filtro == '') {
+      this.turnosEnCursoFiltro = this.turnosEnCurso;
+      console.log(this.turnosEnCursoFiltro);
+
+    }
+
+  }
 
   cancelar(turno: Turno) {
     Swal.fire({
@@ -88,4 +101,38 @@ export class PacienteTurnosComponent implements OnInit {
     });
   }
 
+  calificar(turno: Turno) {
+    Swal.fire({
+      title: "Calificacion: ",
+      input: 'text',
+      icon: 'question',
+      confirmButtonText: 'Ok',
+      showCancelButton: true,
+      cancelButtonText: 'Cancel'
+    }).then(value => {
+      if (value.value) {
+        turno.comentarioAtencion = value.value;
+        this.turnoService.cambiarComentarioAtencion(turno).then((value) => {
+          if (value) {
+            Swal.fire({
+              title: "Calificado",
+              icon: 'success',
+              confirmButtonText: 'Ok',
+            });
+          }
+          else {
+            Swal.fire({
+              title: "No se pudo calificar",
+              icon: 'error',
+              confirmButtonText: 'Ok',
+            });
+          }
+        });
+      }
+    });
+  }
+
+  encuesta(turno: Turno) {
+
+  }
 }

@@ -67,7 +67,6 @@
         </div>
 
         <div *ngSwitchCase="'ESPECIALISTAS'">
-
             <table class="table table-light">
                 <thead class="thead-light">
                     <tr>
@@ -108,7 +107,6 @@
             </table>
         </div>
         <div *ngSwitchCase="'ADMINS'">
-
             <table class="table table-light">
                 <thead class="thead-light">
                     <tr>
@@ -137,7 +135,7 @@
             </table>
         </div>
         <div *ngSwitchCase="'USUARIOS'">
-            <table class="table table-light">
+            <table class="table table-light" id="excel-table">
                 <thead class="thead-light">
                     <tr>
                         <th>Nombre</th>
@@ -163,9 +161,11 @@
                     </tr>
                 </tbody>
             </table>
+            <button (click)="exportexcel()"> Descargar excel </button>
         </div>
         <app-admin *ngSwitchCase="'REGISTRO'"></app-admin>
         <app-mi-perfil *ngSwitchCase="'PERFIL'"></app-mi-perfil>
+        <app-informes *ngSwitchCase="'INFORMES'"></app-informes>
     </container-element>
 
 

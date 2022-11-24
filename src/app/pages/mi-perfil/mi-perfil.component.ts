@@ -6,6 +6,8 @@ import { Admin } from 'src/app/clases/admin';
 import { Especialista } from 'src/app/clases/especialista';
 import { Paciente } from 'src/app/clases/paciente';
 import { Especialidad } from 'src/app/clases/especialidad';
+import { Historial } from 'src/app/clases/historial';
+import { HistorialService } from 'src/app/services/historial.service';
 
 @Component({
   selector: 'app-mi-perfil',
@@ -17,7 +19,9 @@ export class MiPerfilComponent implements OnInit {
   admin?: Admin;
   especialista?: Especialista;
   paciente?: Paciente;
-  constructor(private auth: UserService, private spinner: NgxSpinnerService) {
+  historial?: Historial | null;
+
+  constructor(private auth: UserService, private spinner: NgxSpinnerService, private historialService: HistorialService) {
     this.spinner.show();
     this.auth.getUserProfile().subscribe((res) => {
       this.spinner.hide();
@@ -31,6 +35,8 @@ export class MiPerfilComponent implements OnInit {
           break;
         case "Paciente":
           this.paciente = new Paciente(this.uid, this.nombre, this.apellido, this.dni, this.edad, this.correo, this.foto, this.clave, this.img2, this.obraSocial);
+          this.traerHistorial();
+
           break;
       }
     });
@@ -83,4 +89,11 @@ export class MiPerfilComponent implements OnInit {
     return this.usuarioActual['obraSocial'];
   }
 
+
+  traerHistorial() {
+    this.historialService.traerHistorialUID(this.uid).then(data => {
+      this.historial = data;
+      console.log(data);
+    });
+  }
 }

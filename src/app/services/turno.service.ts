@@ -52,6 +52,19 @@ export class TurnoService {
     }
   }
 
+  async cambiarARechazado(turno: Turno) {
+    try {
+      const postDocRef = doc(this.firestore, `turnos/${turno.id}`);
+      const comentarioRechazado = turno.comentarioRechazado;
+      const estado = turno.estado;
+      await updateDoc(postDocRef, { comentarioRechazado, estado });
+      return true;
+    } catch (e) {
+      console.log(e);
+      return false;
+    }
+  }
+
   async cambiarAFinalizado(turno: Turno) {
     try {
       const postDocRef = doc(this.firestore, `turnos/${turno.id}`);
@@ -77,4 +90,15 @@ export class TurnoService {
     }
   }
 
+  async cambiarComentarioAtencion(turno: Turno) {
+    try {
+      const postDocRef = doc(this.firestore, `turnos/${turno.id}`);
+      const comentarioAtencion = turno.comentarioAtencion;
+      await updateDoc(postDocRef, { comentarioAtencion });
+      return true;
+    } catch (e) {
+      console.log(e);
+      return false;
+    }
+  }
 }
