@@ -5,20 +5,25 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav ">
                     <li class="nav-item">
-                        <a #navEsp class="nav-link" aria-current="page"
-                            (click)="tabla = 'ESPECIALISTAS'; addMyClass()">ESPECIALISTAS</a>
+                        <a appColor #navEsp class="nav-link" aria-current="page"
+                            (click)="tabla = 'ESPECIALISTAS';addMyClass()">ESPECIALISTAS</a>
                     </li>
                     <li class="nav-item">
-                        <a #navPac class="nav-link" (click)="tabla = 'PACIENTES';addMyClass()">PACIENTES</a>
+                        <a appColor #navPac class="nav-link" (click)="tabla = 'PACIENTES';addMyClass()">PACIENTES</a>
                     </li>
                     <li class="nav-item">
-                        <a #navAdmin class="nav-link" (click)="tabla = 'ADMINS'; addMyClass()">ADMINS</a>
+                        <a appColor #navAdmin class="nav-link" (click)="tabla = 'ADMINS'; addMyClass()">ADMINS</a>
                     </li>
                     <li class="nav-item">
-                        <a #navRegistro class="nav-link" (click)="tabla = 'REGISTRO'; addMyClass()">REGISTRO</a>
+                        <a appColor #navRegistro class="nav-link"
+                            (click)="tabla = 'REGISTRO'; addMyClass()">REGISTRO</a>
                     </li>
                     <li class="nav-item">
-                        <a #navPerfil class="nav-link" (click)="tabla = 'PERFIL'; addMyClass()">MI PERFIL</a>
+                        <a appColor #navPerfil class="nav-link" (click)="tabla = 'PERFIL'; addMyClass()">MI PERFIL</a>
+                    </li>
+                    <li class="nav-item">
+                        <a appColor #navInformes class="nav-link"
+                            (click)="tabla = 'INFORMES'; addMyClass()">INFORMES</a>
                     </li>
                     <li class="nav-item">
                         <a id="logout" class="nav-link" (click)="logout()">CERRAR SESION</a>
@@ -49,17 +54,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let paciente of pacientes">
-                        <td>{{paciente.nombre}}</td>
-                        <td>{{paciente.apellido}}</td>
+                    <tr *ngFor="let paciente of pacientes" appBorder defaultStyle="dotted solid">
+                        <td>{{paciente.nombre | sustPropio}}</td>
+                        <td>{{paciente.apellido | sustPropio}}</td>
                         <td>{{paciente.dni}}</td>
-                        <td>{{paciente.edad}}</td>
-                        <td>{{paciente.correo}}</td>
+                        <td>{{paciente.edad | edad}}</td>
+                        <td>{{paciente.correo }}</td>
                         <td>{{paciente.clave}}</td>
                         <td>{{paciente.perfil}}</td>
                         <td>{{paciente.obraSocial}}</td>
-                        <td><img height="100px" src="{{paciente.img}}" alt="{{paciente.nombre}}"></td>
-                        <td><img height="100px" src="{{paciente.img2}}" alt="{{paciente.nombre}}"></td>
+                        <td><img height="100px" src="{{paciente.img}}" alt="{{paciente.nombre | sustPropio}}"></td>
+                        <td><img height="100px" src="{{paciente.img2}}" alt="{{paciente.nombre | sustPropio}}"></td>
 
                     </tr>
                 </tbody>
@@ -83,18 +88,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let especialista of especialistas">
-                        <td>{{especialista.nombre}}</td>
-                        <td>{{especialista.apellido}}</td>
+                    <tr *ngFor="let especialista of especialistas" appBorder defaultColor="red">
+                        <td>{{especialista.nombre | sustPropio}}</td>
+                        <td>{{especialista.apellido | sustPropio}}</td>
                         <td>{{especialista.dni}}</td>
-                        <td>{{especialista.edad}}</td>
-                        <td>{{especialista.correo}}</td>
+                        <td>{{especialista.edad | edad}}</td>
+                        <td>{{especialista.correo }}</td>
                         <td>{{especialista.clave}}</td>
                         <td>{{especialista.perfil}}</td>
                         <td>
-                            <p *ngFor="let espec of especialista.especialidad">{{espec.nombre}}</p>
+                            <p *ngFor="let espec of especialista.especialidad">{{espec.nombre | sustPropio}}</p>
                         </td>
-                        <td><img height="100px" src="{{especialista.img}}" alt="{{especialista.nombre}}">
+                        <td><img height="100px" src="{{especialista.img}}" alt="{{especialista.nombre | sustPropio}}">
                         </td>
                         <td *ngIf="especialista.activo; else elseBlock">
                             <button class="no-activo" (click)="cambiarEstado(especialista)">DESACTIVAR</button>
@@ -121,15 +126,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let admin of admins">
-                        <td>{{admin.nombre}}</td>
-                        <td>{{admin.apellido}}</td>
+                    <tr *ngFor="let admin of admins" appBorder defaultStyle="dotted" defaultColor="green">
+                        <td>{{admin.nombre | sustPropio}}</td>
+                        <td>{{admin.apellido | sustPropio}}</td>
                         <td>{{admin.dni}}</td>
-                        <td>{{admin.edad}}</td>
-                        <td>{{admin.correo}}</td>
+                        <td>{{admin.edad | edad}}</td>
+                        <td>{{admin.correo }}</td>
                         <td>{{admin.clave}}</td>
                         <td>{{admin.perfil}}</td>
-                        <td><img height="100px" src="{{admin.img}}" alt="{{admin.nombre}}"></td>
+                        <td><img height="100px" src="{{admin.img}}" alt="{{admin.nombre | sustPropio}}"></td>
                     </tr>
                 </tbody>
             </table>
@@ -149,15 +154,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let usuario of usuarios">
-                        <td>{{usuario.nombre}}</td>
-                        <td>{{usuario.apellido}}</td>
+                    <tr *ngFor="let usuario of usuarios" appBorder defaultStyle="solid" defaultColor="ilver"
+                        defaultWidth="2px">
+                        <td>{{usuario.nombre | sustPropio}}</td>
+                        <td>{{usuario.apellido | sustPropio}}</td>
                         <td>{{usuario.dni}}</td>
-                        <td>{{usuario.edad}}</td>
-                        <td>{{usuario.correo}}</td>
+                        <td>{{usuario.edad | edad}}</td>
+                        <td>{{usuario.correo }}</td>
                         <td>{{usuario.clave}}</td>
                         <td>{{usuario.perfil}}</td>
-                        <td><img height="100px" src="{{usuario.img}}" alt="{{usuario.nombre}}"></td>
+                        <td><img height="100px" src="{{usuario.img}}" alt="{{usuario.nombre | sustPropio}}"></td>
                     </tr>
                 </tbody>
             </table>
@@ -166,6 +172,7 @@
         <app-admin *ngSwitchCase="'REGISTRO'"></app-admin>
         <app-mi-perfil *ngSwitchCase="'PERFIL'"></app-mi-perfil>
         <app-informes *ngSwitchCase="'INFORMES'"></app-informes>
+
     </container-element>
 
 

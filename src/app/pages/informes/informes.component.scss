@@ -1,0 +1,31 @@
+.container {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    height: 100%;
+    width: 100%;
+    grid-template-rows: 50% 50%;
+    grid-template-areas:
+        "t e l"
+        "f s l"
+}
+
+#turnos {
+    grid-area: t;
+}
+
+#especialidad {
+    grid-area: e;
+}
+
+#finalizados {
+    grid-area: f;
+}
+
+#solicitados {
+    grid-area: s;
+}
+
+#logs {
+    grid-area: l;
+}

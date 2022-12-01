@@ -31,6 +31,20 @@ import { PacienteTurnosComponent } from './pages/mis-turnos/paciente-turnos/paci
 import { RouterModule } from '@angular/router';
 import { EspecialistaTurnosComponent } from './pages/mis-turnos/especialista-turnos/especialista-turnos.component';
 import { InformesComponent } from './pages/informes/informes.component';
+import { NgChartsModule } from 'ng2-charts';
+import { TurnosPorEspecialidadComponent } from './componente/informes/turnos-por-especialidad/turnos-por-especialidad.component';
+import { TurnosPorDiaComponent } from './componente/informes/turnos-por-dia/turnos-por-dia.component';
+import { TurnosSolicitadosComponent } from './componente/informes/turnos-solicitados/turnos-solicitados.component';
+import { TurnosFinalizadosComponent } from './componente/informes/turnos-finalizados/turnos-finalizados.component';
+import { LogsComponent } from './componente/informes/logs/logs.component';
+import { AgrandarDirective } from './directivas/agrandar.directive';
+import { ColorDirective } from './directivas/color.directive';
+import { BorderDirective } from './directivas/border.directive';
+import { SustPropioPipe } from './pipes/sust-propio.pipe';
+import { EdadPipe } from './pipes/edad.pipe';
+import { AlturaPipe } from './pipes/altura.pipe';
+import { PesoPipe } from './pipes/peso.pipe';
+import { TemperaturaPipe } from './pipes/temperatura.pipe';
 
 @NgModule({
   declarations: [
@@ -51,7 +65,20 @@ import { InformesComponent } from './pages/informes/informes.component';
     PacienteTurnosComponent,
     SolicitarTurnoComponent,
     EspecialistaTurnosComponent,
-    InformesComponent
+    InformesComponent,
+    TurnosPorEspecialidadComponent,
+    TurnosPorDiaComponent,
+    TurnosSolicitadosComponent,
+    TurnosFinalizadosComponent,
+    LogsComponent,
+    AgrandarDirective,
+    ColorDirective,
+    BorderDirective,
+    SustPropioPipe,
+    EdadPipe,
+    AlturaPipe,
+    PesoPipe,
+    TemperaturaPipe
   ],
   imports: [
     BrowserModule,
@@ -65,6 +92,8 @@ import { InformesComponent } from './pages/informes/informes.component';
     BrowserAnimationsModule,
     NgxSpinnerModule,
     RecaptchaModule,
+    NgChartsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

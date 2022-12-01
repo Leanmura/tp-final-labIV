@@ -1,0 +1,6 @@
+<div id="container-ingreso">
+    <h3>LOGS</h3>
+    <div *ngFor="let i of ingresos">
+        <p>{{ i.log.toLocaleString() + " - " + i.usuario }}</p>
+    </div>
+</div>

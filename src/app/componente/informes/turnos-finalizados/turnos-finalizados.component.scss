@@ -1,0 +1,13 @@
+#container-ingreso {
+    height: 400px;
+    width: 500px;
+    background-color: rgba(228, 228, 228, 0.726);
+    border-radius: 10px;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    margin-top: 10px;
+    grid-template-rows: 10% 10% 80%;
+
+    margin: 10px;
+}

@@ -1,0 +1,10 @@
+<div id="container-ingreso">
+    <h4 class="text-center">Turnos Solicitados por medico</h4>
+    <h5>{{rango}}</h5>
+    <div id="container-canvas">
+        <canvas width="50" height="50" baseChart [datasets]="doughnutChartDatasets" [labels]="doughnutChartLabels"
+            [type]="'doughnut'" [options]="doughnutChartOptions" [plugins]="doughnutChartPlugins"
+            [legend]="doughnutChartLegend">
+        </canvas>
+    </div>
+</div>

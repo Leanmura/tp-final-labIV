@@ -11,7 +11,7 @@
             <h5>DNI: {{dni}}</h5>
             <h5>Correo: {{correo}}</h5>
             <h5>Perfil: {{perfil}}</h5>
-            <h5>Edad: {{edad}}</h5>
+            <h5>Edad: {{edad | edad}}</h5>
             <h5>Especialidad: </h5>
             <ul>
                 <li *ngFor="let especialidad of especialista?.especialidad">
@@ -26,14 +26,14 @@
             <h5>DNI: {{dni}}</h5>
             <h5>Correo: {{correo}}</h5>
             <h5>Perfil: {{perfil}}</h5>
-            <h5>Edad: {{edad}}</h5>
+            <h5>Edad: {{edad | edad}}</h5>
         </div>
         <div *ngIf="perfil == 'Paciente'" id="">
             <h3>{{nombre + " " + apellido}}</h3>
             <h5>DNI: {{dni}}</h5>
             <h5>Correo: {{correo}}</h5>
             <h5>Perfil: {{perfil}}</h5>
-            <h5>Edad: {{edad}}</h5>
+            <h5>Edad: {{edad | edad}}</h5>
             <h5>Obra Social: {{obraSocial}}</h5>
             <img src="{{img2}}">
 
@@ -42,9 +42,9 @@
     </div>
     <div id="container-historial" *ngIf="historial">
         <h3>HISTORIAL CLINICO</h3>
-        <h5>Altura: {{historial.altura}}</h5>
-        <h5>Peso: {{historial.peso}}</h5>
-        <h5>Temperatura: {{historial.temperatura}}</h5>
+        <h5>Altura: {{historial.altura | altura}}</h5>
+        <h5>Peso: {{historial.peso | peso}}</h5>
+        <h5>Temperatura: {{historial.temperatura | temperatura}}</h5>
         <h5>Presion: {{historial.presion}}</h5>
         <h5 *ngFor="let dato of historial.datosDinamicos">{{dato.clave + ": " + dato.valor}}</h5>
 

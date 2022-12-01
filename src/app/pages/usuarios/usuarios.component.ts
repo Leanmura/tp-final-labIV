@@ -28,6 +28,7 @@ export class UsuariosComponent implements OnInit {
   @ViewChild("navAdmin") navAdmin: ElementRef | undefined;
   @ViewChild("navRegistro") navRegistro: ElementRef | undefined;
   @ViewChild("navPerfil") navPerfil: ElementRef | undefined;
+  @ViewChild("navInformes") navInformes: ElementRef | undefined;
 
   constructor(private auth: UserService,
     private firestore: Firestore,
@@ -47,6 +48,8 @@ export class UsuariosComponent implements OnInit {
         this.renderer.removeClass(this.navAdmin?.nativeElement, "active");
         this.renderer.removeClass(this.navRegistro?.nativeElement, "active");
         this.renderer.removeClass(this.navPerfil?.nativeElement, "active");
+        this.renderer.removeClass(this.navInformes?.nativeElement, "active");
+
 
 
         break;
@@ -56,6 +59,8 @@ export class UsuariosComponent implements OnInit {
         this.renderer.removeClass(this.navAdmin?.nativeElement, "active");
         this.renderer.removeClass(this.navRegistro?.nativeElement, "active");
         this.renderer.removeClass(this.navPerfil?.nativeElement, "active");
+        this.renderer.removeClass(this.navInformes?.nativeElement, "active");
+
 
 
         break;
@@ -64,6 +69,7 @@ export class UsuariosComponent implements OnInit {
         this.renderer.removeClass(this.navEsp?.nativeElement, "active");
         this.renderer.removeClass(this.navPac?.nativeElement, "active");
         this.renderer.removeClass(this.navRegistro?.nativeElement, "active");
+        this.renderer.removeClass(this.navInformes?.nativeElement, "active");
         this.renderer.removeClass(this.navPerfil?.nativeElement, "active");
 
 
@@ -74,6 +80,8 @@ export class UsuariosComponent implements OnInit {
         this.renderer.removeClass(this.navPac?.nativeElement, "active");
         this.renderer.removeClass(this.navRegistro?.nativeElement, "active");
         this.renderer.removeClass(this.navPerfil?.nativeElement, "active");
+        this.renderer.removeClass(this.navInformes?.nativeElement, "active");
+
 
         break;
       case "REGISTRO":
@@ -82,9 +90,20 @@ export class UsuariosComponent implements OnInit {
         this.renderer.removeClass(this.navEsp?.nativeElement, "active");
         this.renderer.removeClass(this.navPac?.nativeElement, "active");
         this.renderer.removeClass(this.navPerfil?.nativeElement, "active");
+        this.renderer.removeClass(this.navInformes?.nativeElement, "active");
+
         break;
       case "PERFIL":
         this.renderer.addClass(this.navPerfil?.nativeElement, "active");
+        this.renderer.removeClass(this.navAdmin?.nativeElement, "active");
+        this.renderer.removeClass(this.navEsp?.nativeElement, "active");
+        this.renderer.removeClass(this.navPac?.nativeElement, "active");
+        this.renderer.removeClass(this.navRegistro?.nativeElement, "active");
+        this.renderer.removeClass(this.navInformes?.nativeElement, "active");
+        break;
+      case "INFORMES":
+        this.renderer.addClass(this.navInformes?.nativeElement, "active");
+        this.renderer.removeClass(this.navPerfil?.nativeElement, "active");
         this.renderer.removeClass(this.navAdmin?.nativeElement, "active");
         this.renderer.removeClass(this.navEsp?.nativeElement, "active");
         this.renderer.removeClass(this.navPac?.nativeElement, "active");

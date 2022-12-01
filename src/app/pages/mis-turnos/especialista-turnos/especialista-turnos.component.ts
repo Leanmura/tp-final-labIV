@@ -45,14 +45,17 @@ export class EspecialistaTurnosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.turnoService.getTurnos().subscribe((dato) => {
-      //console.table(dato);
-      dato.forEach(turno => {
-        let turnoTS: any = turno.horario;
-        let ts = new Timestamp(turnoTS['seconds'], 0);
-        turno.horario = ts.toDate();
-      })
-      this.turnosEnCurso = dato;
+    this.turnoService.getTurnos().subscribe((turnos) => {
+      //console.table(turnos);
+      this.turnosEnCurso = [];
+      turnos.forEach(turno => {
+        if (turno.especialista.uid == this.userService.currentUser.uid) {
+          let turnoTS: any = turno.horario;
+          let ts = new Timestamp(turnoTS['seconds'], 0);
+          turno.horario = ts.toDate();
+          this.turnosEnCurso.push(turno);
+        }
+      });
       this.turnosEnCursoFiltro = this.turnosEnCurso;
     });
   }

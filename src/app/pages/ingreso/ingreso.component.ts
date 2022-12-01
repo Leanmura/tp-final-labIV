@@ -3,8 +3,10 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { Router } from '@angular/router';
 import { Admin } from 'src/app/clases/admin';
 import { Especialista } from 'src/app/clases/especialista';
+import { Ingreso } from 'src/app/clases/ingreso';
 import { Paciente } from 'src/app/clases/paciente';
 import { Usuario } from 'src/app/clases/usuario';
+import { LogsService } from 'src/app/services/logs.service';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 
@@ -19,7 +21,7 @@ export class IngresoComponent implements OnInit {
   archivos: any = [];
   usuariosAccesoRapido: Usuario[] = [];
   public previsualizacion?: string;
-  constructor(private userService: UserService, private router: Router, private fb: FormBuilder) {
+  constructor(private userService: UserService, private router: Router, private fb: FormBuilder, private logService: LogsService) {
     this.formLog = this.fb.group({
       'email': ['', [Validators.required, Validators.email]],
       'password': ['', [Validators.required]],
@@ -86,7 +88,7 @@ export class IngresoComponent implements OnInit {
                   this.router.navigateByUrl('/home');
 
               }
-
+              this.logService.createLog(new Ingreso(usuario.uid, usuario.apellido + " " + usuario.nombre, new Date(Date.now())))
             }
             else {
               this.userService.logout();

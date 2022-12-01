@@ -11,8 +11,8 @@ export class BienvenidaComponent implements OnInit {
 
   constructor(private router: Router,
     private spinner: NgxSpinnerService) {
-    // this.spinner.show();
-    // setTimeout(() => { this.spinner.hide() }, 5000);
+    this.spinner.show();
+    setTimeout(() => { this.spinner.hide() }, 5000);
   }
 
   ngOnInit(): void {

@@ -4,6 +4,7 @@ import { arrayUnion, collection, doc, Firestore, getDoc, getDocs, query, setDoc,
 import { getFirestore } from '@firebase/firestore';
 import { Especialidad } from 'src/app/clases/especialidad';
 import { EspecialidadService } from 'src/app/services/especialidad.service';
+import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -43,10 +44,14 @@ export class MisHorariosComponent implements OnInit {
 
   especialidadActual: string = "Ginecologo";
 
-  constructor(private firestore: Firestore, private auth: Auth, private espService: EspecialidadService) { }
+  constructor(private firestore: Firestore, private auth: Auth, private espService: EspecialidadService, private userSercivce: UserService) { }
   ngOnInit(): void {
     //console.table(this.horarios);
     this.traerHorarios();
+    this.userSercivce.getUserProfile().subscribe(usuario => {
+      console.log(usuario['especialidad']);
+      this.especialidadActual = usuario['especialidad'][0].nombre;
+    });
   }
 
   async cambiarEstado(i: number, x: number) {

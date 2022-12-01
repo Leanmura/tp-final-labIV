@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { collection, collectionData, doc, Firestore, getDocs, setDoc, updateDoc } from '@angular/fire/firestore';
+import { collection, collectionData, doc, Firestore, getDocs, query, setDoc, updateDoc, where } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Turno } from '../clases/turno';
 
@@ -101,4 +101,5 @@ export class TurnoService {
       return false;
     }
   }
+
 }

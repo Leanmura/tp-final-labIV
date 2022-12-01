@@ -45,8 +45,8 @@ export class PacienteTurnosComponent implements OnInit {
 
     this.turnosEnCursoFiltro = this.turnosEnCurso.filter(turno => {
       return turno.especialidad.nombre.trim().toLowerCase().includes(this.filtro.trim().toLowerCase()) ||
-        turno.paciente.nombre.trim().toLowerCase().includes(this.filtro.trim().toLowerCase()) ||
-        turno.paciente.apellido.trim().toLowerCase().includes(this.filtro.trim().toLowerCase());
+        turno.especialista.nombre.trim().toLowerCase().includes(this.filtro.trim().toLowerCase()) ||
+        turno.especialista.apellido.trim().toLowerCase().includes(this.filtro.trim().toLowerCase());
 
       console.log(turno.especialidad.nombre.trim().toLowerCase() + " tiene " + this.filtro.trim().toLowerCase() + " " + turno.especialidad.nombre.trim().toLowerCase().includes(this.filtro.trim().toLowerCase()))
     });

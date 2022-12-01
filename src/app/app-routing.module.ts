@@ -18,14 +18,14 @@ const routes: Routes = [
   },
   {
     path: "registro", component: RegistroComponent,
-    //data: { animation: 'registro' },
+    data: { animation: 'registro' },
     //...canActivate(() => redirectLoggedInTo(['/home'])),
 
 
   },
   {
     path: "ingreso", component: IngresoComponent,
-    //data: { animation: 'registro' },
+    data: { animation: 'registro' },
 
     // ...canActivate(() => redirectLoggedInTo(['/home']))
   },
@@ -43,7 +43,7 @@ const routes: Routes = [
   },
   {
     path: "", component: BienvenidaComponent,
-    //data: { animation: 'bienvenida' },
+    data: { animation: 'bienvenida' },
 
 
 
